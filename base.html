@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Friends</title>
+    <link rel="stylesheet" href="base_style.css">
+</head>
+<body>
+    <label for="area"><h1>Base??</h1></label><br>
+    <select id="area" onchange="ChangeOptions()">
+      <option value="non">선택해주세요</option>
+      <option value="base64">Base64</option>
+      <option value="base32">Base32</option>
+      <option value="base16">Base16</option>
+    </select>
+    <div id="input">
+        <div class="text">
+            <textarea id="encode_input" rows="3" placeholder="문자열 입력"></textarea><br>
+            <div class="but">
+                <button id="encode">Encoding!  (암호화!)</button>
+            </div><br>
+            <textarea id="encode_output" rows="3">base를 선택하지 않으셨군요!!!</textarea>
+        </div>
+        <div class="text">
+            <textarea id="decode_input" rows="3" placeholder="문자열 입력"></textarea><br>
+            <div class="but">
+                <button id="decode">Decoding!  (복호화!)</button>
+            </div><br>
+            <textarea id="decode_output" rows="3">base를 선택하지 않으셨군요!!!</textarea>
+        </div>
+    </div>
+    <a href="index.html">돌아가기</a>
+</body>
+<script src="base_script.js"></script>
+</html>

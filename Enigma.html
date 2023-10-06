@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma's password</title>
+    <link rel="stylesheet" href="Enigma_style.css">
+</head>
+<body>
+    <div id="turning">
+        <h1>입력되는 알파벳 : a b c d e f g h i j k l m n o p q r s t u v w x y z</h1>
+        <h1 id="turn1">초기에 첫번째 회전판 : a b c d e f g h i j k l m n o p q r s t u v w x y z</h1>
+        <h1 id="turn2">초기에 두번째 회전판 : a b c d e f g h i j k l m n o p q r s t u v w x y z</h1>
+        <h1 id="turn3">초기에 세번째 회전판 : a b c d e f g h i j k l m n o p q r s t u v w x y z</h1>
+    </div>
+    <div id="input">
+        <div class="text">
+            <textarea id="encode_input" rows="3" placeholder="문자열 입력"></textarea><br>
+            <div class="but">
+                <button id="encode">Encoding!  (암호화!)</button>
+            </div><br>
+            <textarea id="encode_output" rows="3"></textarea>
+        </div>
+        <div class="text">
+            <textarea id="decode_input" rows="3" placeholder="문자열 입력"></textarea><br>
+            <div class="but">
+                <button id="decode">Decoding!  (복호화!)</button>
+            </div><br>
+            <textarea id="decode_output" rows="3"></textarea>
+        </div>
+    </div>
+    <a href="index.html">돌아가기</a>
+</body>
+<script src="Enigma_script.js"></script>
+</html>

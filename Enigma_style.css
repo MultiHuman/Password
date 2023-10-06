@@ -1,0 +1,49 @@
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    display: block;
+    background: linear-gradient(to right, #5465FF, #BFD7FF);
+    height: 100%;
+}
+#turning {
+    display: block;
+}
+h1 {
+    display: block;
+    text-align: right;
+}
+#input {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+}
+.text {
+    margin: 50px;
+    display:grid;
+    text-align: center;
+}
+textarea {
+    font-size: 35px;
+}
+.but {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+button {
+    font-size: 35px;
+    border-radius: 20px;
+}
+button:hover {
+    background: none;
+    border: 1;
+}
+a {
+    font-size: 30px;
+    text-decoration: none;
+    color: chartreuse;
+    margin: 100px;
+}
