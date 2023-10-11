@@ -63,6 +63,7 @@ function encode(str) {
   }
   document.getElementById('encode_output').value = ans;
 }
+
 function decode(str) {
   let ans = '';
   for(let i = 0; i < str.length; i++) {
