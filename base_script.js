@@ -171,7 +171,6 @@ function encode(str) {
       while(bits.length%6 || !bits.length) {
         bits.push(0);
       }
-      console.log(bits);
       c = 32;
       cnt = 0;
       for(let code of bits) {
@@ -273,7 +272,6 @@ function decode(str) {
       bits = base64_decode(str);
       break;
   }
-  console.log(bits);
   for(let i = 0; i < bits.length; i++) {
     let cnt = 0;
     if(bits[i] == 0) {

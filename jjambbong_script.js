@@ -166,6 +166,19 @@ let decode_turning3 = [
   13,
   12
 ];
+let base64 = [];
+
+for(let i = 0; i < 26; i++) {
+  base64.push(String.fromCharCode(i+65));
+}
+for(let i = 0; i < 26; i++) {
+  base64.push(String.fromCharCode(i+97));
+}
+for(let i = 0; i < 10; i++) {
+  base64.push(i);
+}
+base64.push('+');
+base64.push('/');
 
 let is_p = 0, is_q = 0, p, q, e, d, n, phi_n;
 
@@ -262,6 +275,88 @@ function rsa_decode(a) {
   return tot;
 }
 
+function base64_encode(str) {
+  let bits = [];
+  let ans = '';
+  for(let i = 0; i < str.length; i++) {
+    let ex = [];
+    let c = str[i].charCodeAt(0);
+    if(c < 128) {
+      while(c != 0) {
+        ex.push(c%2);
+        c -= c%2;
+        c /= 2;
+      }
+      for(let i = ex.length; i < 8; i++) {
+        bits.push(0);
+      }
+      for(let i = ex.length-1; i >= 0; i--) {
+        bits.push(ex[i]);
+      }
+    } else if(c < 2048) {
+      while(c != 0) {
+        ex.push(c%2);
+        c -= c%2;
+        c /= 2;
+      }
+      while(ex.length != 11) {
+        ex.push(0);
+      }
+      bits.push(1);
+      bits.push(1);
+      bits.push(0);
+      for(let i = ex.length-1; i > ex.length-6; i--) {
+        bits.push(ex[i]);
+      }
+      bits.push(1);
+      bits.push(0);
+      for(let i = ex.length-6; i >= 0; i--) {
+        bits.push(ex[i]);
+      }
+    } else if(c < 65536) {
+      while(c != 0) {
+        ex.push(c%2);
+        c -= c%2;
+        c /= 2;
+      }
+      while(ex.length != 16) {
+        ex.push(0);
+      }
+      bits.push(1);
+      bits.push(1);
+      bits.push(1);
+      bits.push(0);
+      for(let i = ex.length-1; i > ex.length-5; i--) {
+        bits.push(ex[i]);
+      }
+      bits.push(1);
+      bits.push(0);
+      for(let i = ex.length-5; i > ex.length-11; i--) {
+        bits.push(ex[i]);
+      }
+      bits.push(1);
+      bits.push(0);
+      for(let i = ex.length-11; i >= 0; i--) {
+        bits.push(ex[i]);
+      }
+    }
+  }
+  while(bits.length%6 || !bits.length) {
+    bits.push(0);
+  }
+  c = 32;
+  cnt = 0;
+  for(let code of bits) {
+    if(code) cnt += c;
+    if(c == 1) {
+      ans += base64[cnt];
+      cnt = 0;
+      c = 32;
+    } else c /= 2;
+  }
+  return ans;
+}
+
 function encode(str) {
   let ans = '';
   let cnt = 0;
@@ -276,11 +371,96 @@ function encode(str) {
         num *= 10;
         num += ex-48;
       }
-      console.log(rsa_encode(num));
       ans += rsa_encode(num);
-    } else ans += str[i];
+    } else if(now == 32) ans += str[i];
+    else {
+      let s = str[i];
+      for(; i < str.length-1; i++) {
+        let ex = str[i+1].charCodeAt(0);
+        if((65 <= ex && ex <= 90) || (97 <= ex && ex <= 122) || (48 <= ex && ex <= 57) || ex == 32) break;
+        s += str[i+1];
+      }
+      ans += '$';
+      ans += base64_encode(s);
+      ans += '#';
+    }
   }
   document.getElementById('encode_output').value = ans;
+}
+
+function base64_decode(str) {
+  ans = '';
+  let bits = [];
+  for(let i = 0; i < str.length; i++) {
+    let ex = [];
+    let now = str[i].charCodeAt(0);
+    if(now == 43) now = 62;
+    else if(now == 47) now = 63;
+    else if(now < 58) now += 4;
+    else if(now < 91) now -= 65;
+    else now -= 71;
+    while(now) {
+      ex.push(now%2);
+      now -= now%2;
+      now /= 2;
+    }
+    while(ex.length%6 || !ex.length) {
+      ex.push(0);
+    }
+    for(let j = 5; j >= 0; j--) {
+      bits.push(ex[j]);
+    }
+  }
+  for(let i = 0; i < bits.length; i++) {
+    let cnt = 0;
+    if(bits[i] == 0) {
+      if(bits.length-i < 8) break;
+      let ex = 128;
+      for(let j = 0; j < 8; j++) {
+        if(bits[j+i]) cnt += ex;
+        ex /= 2;
+      }
+      i += 7;
+    } else {
+      let n;
+      for(let j = 0; j < 4; j++) {
+        if(!bits[i+j]) break;
+        n = j+1;
+      }
+      switch(n) {
+        case 2:
+          let c = 1024;
+          for(let j = 3; j < 8; j++) {
+            if(bits[i+j]) cnt += c;
+            c /= 2;
+          }
+          for(let j = 10; j < 16; j++) {
+            if(bits[i+j]) cnt += c;
+            c /= 2;
+          }
+          i += 15;
+          break;
+        case 3:
+          let ex = 32768;
+          for(let j = 4; j < 8; j++) {
+            if(bits[i+j]) cnt += ex;
+            ex /= 2;
+          }
+          for(let j = 10; j < 16; j++) {
+            if(bits[i+j]) cnt += ex;
+            ex /= 2;
+          }
+          for(let j = 18; j < 24; j++) {
+            if(bits[i+j]) cnt += ex;
+            ex /= 2;
+          }
+          i += 23;
+          break;
+      }
+    }
+    ans += String.fromCharCode(cnt);
+  }
+  return ans;
 }
 
 function decode(str) {
@@ -298,7 +478,17 @@ function decode(str) {
         num += ex-48;
       }
       ans += rsa_decode(num);
-    } else ans += str[i];
+    } else if(now == 32) ans += str[i];
+    else {
+      let s = '';
+      for(; i < str.length-1; i++) {
+        let ex = str[i+1].charCodeAt(0);
+        if((65 <= ex && ex <= 90) || (97 <= ex && ex <= 122) || (48 <= ex && ex <= 57)) s += str[i+1];
+        else break;
+      }
+      i++;
+      ans += base64_decode(s);
+    }
   }
   document.getElementById('decode_output').value = ans;
 }

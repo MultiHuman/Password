@@ -102,24 +102,6 @@ function Q_Changed() {
 }
 
 function encode(str) {
-  // let ans = '';
-  // let tot = [];
-  // for(let i = 0; i < str.length; i++) {
-  //   let now = str[i].charCodeAt(0);
-  //   now = (now ** e)%n;
-  //   let ex = [];
-  //   while(now) {
-  //     ex.push(now%2);
-  //     now -= now%2;
-  //     now /= 2;
-  //   }
-  //   for(let j = ex.length; j < digits; j++) {
-  //     tot.push(0);
-  //   }
-  //   for(let j = ex.length-1; j >= 0; j--) {
-  //     tot.push(ex[j]);
-  //   }
-  // }
   let tot = 1;
   for(let i = 0; i < e; i++) {
     tot *= str;
@@ -129,24 +111,11 @@ function encode(str) {
 }
 
 function decode(str) {
-  // let ans = '';
-  // for(let i = 0; i < str.length; i++) {
-  //   let a = i%26, b = (i-i%26)/26, c = (i-i%676)/676;
-  //   let now = str[i].charCodeAt(0);
-  //   if(65 <= now && now <= 90) {
-  //     now -= 65;
-  //     ans += String.fromCharCode((decode_turning1[(decode_turning2[(decode_turning3[now]+c)%26]+b)%26]+a)%26+65);
-  //   } else if(97 <= now && now <= 122) {
-  //     now -= 97;
-  //     ans += String.fromCharCode((decode_turning1[(decode_turning2[(decode_turning3[now]+c)%26]+b)%26]+a)%26+97);
-  //   } else ans += str[i];
-  // }
   let tot = 1;
   for(let i = 0; i < d; i++) {
     tot *= str;
     tot %= n;
   }
-  console.log(tot);
   document.getElementById('decode_output').value = tot;
 }
 
