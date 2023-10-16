@@ -4,49 +4,54 @@ let turning3 = [];
 let decode_turning1 = [];
 let decode_turning2 = [];
 let decode_turning3 = [];
+
+const table = document.getElementById("turnner");
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
 while(turning1.length != 26) {
   let now = getRandomInt(0, 26);
   if(turning1.indexOf(now) == -1) turning1.push(now);
 }
-let txt = '';
-for(let turn of turning1) {
-  txt += ' '+String.fromCharCode(turn+97);
-}
 for(let i = 0; i < 26; i++) {
   decode_turning1.push(turning1.indexOf(i));
 }
-document.getElementById('turn1').innerText = '초기에 첫번째 회전판 :'+txt;
 
 while(turning2.length != 26) {
   let now = getRandomInt(0, 26);
   if(turning2.indexOf(now) == -1) turning2.push(now);
 }
-txt = '';
-for(let turn of turning2) {
-  txt += ' '+String.fromCharCode(turn+97);
-}
 for(let i = 0; i < 26; i++) {
   decode_turning2.push(turning2.indexOf(i));
 }
-document.getElementById('turn2').innerText = '초기에 두번째 회전판 :'+txt;
 
 while(turning3.length != 26) {
   let now = getRandomInt(0, 26);
   if(turning3.indexOf(now) == -1) turning3.push(now);
 }
-txt = '';
-for(let turn of turning3) {
-  txt += ' '+String.fromCharCode(turn+97);
-}
 for(let i = 0; i < 26; i++) {
   decode_turning3.push(turning3.indexOf(i));
 }
-document.getElementById('turn3').innerText = '초기에 세번째 회전판 :'+txt;
+
+let new_row = table.insertRow();
+new_row.insertCell(0).innerText = '초기에 첫번째 회전판';
+for(let i = 1; i <= 26; i++) {
+  new_row.insertCell(i).innerText = String.fromCharCode(turning1[i-1]+97);
+}
+new_row = table.insertRow();
+new_row.insertCell(0).innerText = '초기에 두번째 회전판';
+for(let i = 1; i <= 26; i++) {
+  new_row.insertCell(i).innerText = String.fromCharCode(turning2[i-1]+97);
+}
+new_row = table.insertRow();
+new_row.insertCell(0).innerText = '초기에 세번째 회전판';
+for(let i = 1; i <= 26; i++) {
+  new_row.insertCell(i).innerText = String.fromCharCode(turning3[i-1]+97);
+}
 
 function encode(str) {
   let ans = '';
