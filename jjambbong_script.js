@@ -166,6 +166,22 @@ let decode_turning3 = [
   13,
   12
 ];
+const table = document.getElementById("turnner");
+let new_row = table.insertRow();
+new_row.insertCell(0).innerText = '초기에 첫번째 회전판';
+for(let i = 1; i <= 26; i++) {
+  new_row.insertCell(i).innerText = String.fromCharCode(turning1[i-1]+97);
+}
+new_row = table.insertRow();
+new_row.insertCell(0).innerText = '초기에 두번째 회전판';
+for(let i = 1; i <= 26; i++) {
+  new_row.insertCell(i).innerText = String.fromCharCode(turning2[i-1]+97);
+}
+new_row = table.insertRow();
+new_row.insertCell(0).innerText = '초기에 세번째 회전판';
+for(let i = 1; i <= 26; i++) {
+  new_row.insertCell(i).innerText = String.fromCharCode(turning3[i-1]+97);
+}
 let base64 = [];
 
 for(let i = 0; i < 26; i++) {
@@ -218,7 +234,8 @@ function is_n_phi_changed() {
     phi_n = (p-1)*(q-1);
     e = phi_n-1;
     d = find_d();
-  }
+    document.getElementById("rsa").style.margin = "0 auto 0 auto";
+  } else document.getElementById("rsa").style.margin = "0 0 0 31%";
 }
 
 function P_Changed() {
@@ -233,7 +250,7 @@ function P_Changed() {
   } else {
     is_p = 1;
     p = now;
-    prt = 'p : '+now;
+    prt = 'p : ';
   }
   is_n_phi_changed();
   document.getElementById("p_out").innerText = prt;
@@ -251,7 +268,7 @@ function Q_Changed() {
   } else {
     is_q = 1;
     q = now;
-    prt = 'q : '+now;
+    prt = 'q : ';
   }
   is_n_phi_changed();
   document.getElementById("q_out").innerText = prt;

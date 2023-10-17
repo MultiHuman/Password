@@ -26,7 +26,13 @@ h1 {
     text-align: center;
 }
 textarea {
-    font-size: 35px;
+    padding: 0;
+    border: 0;
+    font-size: 27px;
+}
+.changing {
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .but {
     margin-top: 50px;
@@ -50,5 +56,6 @@ a {
 table {
     width: 100%;
     text-align: center;
-    font-size: 40px;
+    font-size: 25px;
+    font-weight: bold;
 }

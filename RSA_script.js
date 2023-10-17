@@ -42,20 +42,22 @@ function get_digits(a) {
 
 function is_n_phi_changed() {
   if(is_p == 1 && is_q == 1) {
-    document.getElementById("n").innerText = "n : "+p*q;
-    document.getElementById("phi").innerText = "Φ(n) : "+(p-1)*(q-1);
+    document.getElementById("n").innerText = p*q;
+    document.getElementById("phi").innerText = (p-1)*(q-1);
     n = p*q;
     get_digits(n);
     phi_n = (p-1)*(q-1);
     e = phi_n-1;
     d = find_d();
-    document.getElementById("e").innerText = "e : "+e;
-    document.getElementById("d").innerText = "d : "+d;
+    document.getElementById("e").innerText = e;
+    document.getElementById("d").innerText = d;
+    document.getElementsByTagName("table")[0].style.margin = "0 auto 0 auto";
   } else {
-    document.getElementById("n").innerText = "n : ";
-    document.getElementById("phi").innerText = "Φ(n) : ";
-    document.getElementById("e").innerText = "e : ";
-    document.getElementById("d").innerText = "d : ";
+    document.getElementById("n").innerText = "";
+    document.getElementById("phi").innerText = "";
+    document.getElementById("e").innerText = "";
+    document.getElementById("d").innerText = "";
+    document.getElementsByTagName("table")[0].style.margin = "0 0 0 31%";
   }
 }
 
@@ -74,7 +76,7 @@ function P_Changed() {
   } else {
     is_p = 1;
     p = now;
-    prt = 'p : '+now;
+    prt = 'p : ';
   }
   is_n_phi_changed();
   document.getElementById("p_out").innerText = prt;
@@ -95,7 +97,7 @@ function Q_Changed() {
   } else {
     is_q = 1;
     q = now;
-    prt = 'q : '+now;
+    prt = 'q : ';
   }
   is_n_phi_changed();
   document.getElementById("q_out").innerText = prt;

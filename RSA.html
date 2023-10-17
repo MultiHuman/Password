@@ -9,29 +9,44 @@
 <body>
     <table>
         <tr>
-            
+            <th id="p_out">p값을 입력해주세요.</th>
+            <th><textarea id="p" cols="4" rows="1" placeholder="입력" onchange="P_Changed()"></textarea></th>
+        </tr>
+        <tr>
+            <th id="q_out">q값을 입력해주세요.</th>
+            <th><textarea id="q" cols="4" rows="1" placeholder="입력" onchange="Q_Changed()"></textarea></th>
+        </tr>
+        <tr>
+            <th>n : </th>
+            <th id="n"></th>
+        </tr>
+        <tr>
+            <th>Φ(n) : </th>
+            <th id="phi"></th>
+        </tr>
+        <tr>
+            <th>e : </th>
+            <th id="e"></th>
+        </tr>
+        <tr>
+            <th>d : </th>
+            <th id="d"></th>
         </tr>
     </table>
-    <h1 id="p_out">p값을 입력해주세요.</h1><textarea id="p" cols="30" rows="1" placeholder="소수 입력" onchange="P_Changed()"></textarea>
-    <h1 id="q_out">q값을 입력해주세요.</h1><textarea id="q" cols="30" rows="1" placeholder="소수 입력" onchange="Q_Changed()"></textarea>
-    <h1 id="n">n : </h1>
-    <h1 id="phi">Φ(n) : </h1>
-    <h1 id="e">e : </h1>
-    <h1 id="d">d : </h1>
     <div id="input">
         <div class="text">
-            <textarea id="encode_input" rows="3" placeholder="n보다 작은 수 입력"></textarea><br>
+            <textarea id="encode_input" class="changing" rows="2" placeholder="n보다 작은 수 입력"></textarea><br>
             <div class="but">
                 <button id="encode">Encoding!  (암호화!)</button>
             </div><br>
-            <textarea id="encode_output" rows="3"></textarea>
+            <textarea id="encode_output" class="changing" rows="2"></textarea>
         </div>
         <div class="text">
-            <textarea id="decode_input" rows="3" placeholder="n보다 작은 수 입력"></textarea><br>
+            <textarea id="decode_input" class="changing" rows="2" placeholder="n보다 작은 수 입력"></textarea><br>
             <div class="but">
                 <button id="decode">Decoding!  (복호화!)</button>
             </div><br>
-            <textarea id="decode_output" rows="3"></textarea>
+            <textarea id="decode_output" class="changing" rows="2"></textarea>
         </div>
     </div>
     <a href="index.html">돌아가기</a>

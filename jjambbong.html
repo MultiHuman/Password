@@ -8,30 +8,67 @@
 </head>
 <body>
     <div id="turning">
-      <h1>입력되는 알파벳 : a b c d e f g h i j k l m n o p q r s t u v w x y z</h1>
-      <h1 id="turn1">초기에 첫번째 회전판 : m x a w h d e n u b t p s g v f l z i c q r o k j y</h1>
-      <h1 id="turn2">초기에 두번째 회전판 : g h s m y q w z n p v t u e k i d f x r b o c l a j</h1>
-      <h1 id="turn3">초기에 세번째 회전판 : p v l c k d t a r u n h z y g f j b s e i m o q x w</h1>
+        <table id="turnner">
+            <tr>
+                <th>입력되는 알파벳</th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+                <th>i</th>
+                <th>j</th>
+                <th>k</th>
+                <th>l</th>
+                <th>m</th>
+                <th>n</th>
+                <th>o</th>
+                <th>p</th>
+                <th>q</th>
+                <th>r</th>
+                <th>s</th>
+                <th>t</th>
+                <th>u</th>
+                <th>v</th>
+                <th>w</th>
+                <th>x</th>
+                <th>y</th>
+                <th>z</th>
+            </tr>
+        </table>
     </div>
-    <h1 id="p_out">p값을 입력해주세요.</h1><textarea id="p" cols="30" rows="1" placeholder="소수 입력" onchange="P_Changed()"></textarea>
-    <h1 id="q_out">q값을 입력해주세요.</h1><textarea id="q" cols="30" rows="1" placeholder="소수 입력" onchange="Q_Changed()"></textarea>
+    <table id="rsa">
+        <tr>
+            <th id="p_out">p값을 입력해주세요.</th>
+            <th><textarea id="p" cols="4" rows="1" placeholder="입력" onchange="P_Changed()"></textarea></th>
+        </tr>
+        <tr>
+            <th id="q_out">q값을 입력해주세요.</th>
+            <th><textarea id="q" cols="4" rows="1" placeholder="입력" onchange="Q_Changed()"></textarea></th>
+        </tr>
+    </table>
     <div id="input">
         <div class="text">
-            <textarea id="encode_input" rows="3" placeholder="문자열 입력"></textarea><br>
+            <textarea id="encode_input" class="changing" rows="2" placeholder="문자열 입력"></textarea><br>
             <div class="but">
                 <button id="encode">Encoding!  (암호화!)</button>
             </div><br>
-            <textarea id="encode_output" rows="3"></textarea>
+            <textarea id="encode_output" class="changing" rows="2"></textarea>
         </div>
         <div class="text">
-            <textarea id="decode_input" rows="3" placeholder="문자열 입력"></textarea><br>
+            <textarea id="decode_input" class="changing" rows="2" placeholder="문자열 입력"></textarea><br>
             <div class="but">
               <button id="decode">Decoding!  (복호화!)</button>
             </div><br>
-            <textarea id="decode_output" rows="3"></textarea>
+            <textarea id="decode_output" class="changing" rows="2"></textarea>
         </div>
     </div>
     <a href="index.html">돌아가기</a>
+    <a href="secret.html">Top Secret</a>
+    <!-- $7LC97J2Y7IiY66as67CY# 128280 173354$7ZWZ64WE# Jpejyarn kvckyizrlunc -->
 </body>
 <script src="jjambbong_script.js"></script>
 </html>

@@ -7,6 +7,9 @@ body {
   background: linear-gradient(to right, #e9dcf7, #BFD7FF);
   height: 100%;
 }
+#turning {
+  align-items: center;
+}
 h1 {
   margin: 0;
 }
@@ -22,7 +25,9 @@ h1 {
   text-align: center;
 }
 textarea {
-  font-size: 35px;
+  padding: 0;
+  border: 0;
+  font-size: 27px;
 }
 .but {
   margin-top: 50px;
@@ -42,4 +47,24 @@ a {
   text-decoration: none;
   color: red;
   margin: 100px;
+}
+#turnner {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+#p {
+  background-color: unset;
+  overflow: hidden;
+}
+#q {
+  background-color: unset;
+  overflow: hidden;
+}
+#rsa {
+  margin-left: 31%;
+  text-align: right;
+  font-size: 25px;
+  font-weight: bold;
 }

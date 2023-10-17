@@ -16,9 +16,12 @@ a {
     font-weight:600;
 }
 a:hover {
-    /* background: linear-gradient(to right, #5465FF, #BFD7FF); */
     background: #b883f0;
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
+}
+ul {
+    padding: 0;
+    margin-right: auto;
 }

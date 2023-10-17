@@ -8,7 +8,7 @@ body {
   height: 100%;
 }
 h1 {
-  margin: 0;
+  margin: auto;
 }
 #input {
   display: grid;
@@ -22,7 +22,9 @@ h1 {
   text-align: center;
 }
 textarea {
-  font-size: 35px;
+  padding: 0;
+  border: 0;
+  font-size: 27px;
 }
 .but {
   margin-top: 50px;
@@ -42,4 +44,14 @@ a {
   text-decoration: none;
   color: red;
   margin: 100px;
+}
+table {
+  margin: 0px auto;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+.changing {
+  margin-left: 10%;
+  margin-right: 10%;
 }
